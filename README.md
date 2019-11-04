@@ -145,8 +145,9 @@ func drive(){
 }
 }
 
-let carInfo = Car
+let carInfo = Car()
 carInfo.drive()
+print(carInfo.numberOfWheels)
 ```
 
 c. Define a Bike struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 2,
@@ -161,6 +162,10 @@ struct Bike: Vehicle {
         print("Begin Pedaling")
     }
 }
+
+let bikeInfo = Bike()
+bikeInfo.drive()
+print(bikeInfo.numberOfWheels)
 ```
 
 </br> </br>
@@ -187,15 +192,27 @@ protocol Flyable {
 ## Question 4
 
 a. Create a protocol called `Transformation`.  The protocol should specify a mutating method called transform
+```
+protocol Transformation {
+mutating func trasnform()
+}
+```
 
 b. Make an enum called `SuperHero` that conforms to `Transformation` with cases `notHulk` and `hulk`
+```
+enum SuperHero: Transformation {
+case hulk
+case notHulk
+}
+```
 
 c. Create an instance of it named `bruceBanner`. Make it so that when the transform function is called that bruceBanner turns from
 `.notHulk` to `.hulk.``
 
 ```swift
 enum SuperHero: Transformation {
-    // write code here.
+    case hulk
+    case notHulk
 }
 
 // Example Output:
