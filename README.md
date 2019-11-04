@@ -185,6 +185,27 @@ protocol Bird {
 protocol Flyable {
  var airspeedVelocity: Double { get }
 }
+
+struct Penguin: Bird {
+var name: String {
+        return "Penguin"
+}
+var canFly: Bool {
+        return false
+}
+}
+
+struct Eagle: Bird, Flyable {
+var name: String {
+        return "Eagle"
+}
+var canFly: Bool {
+        return true
+}
+var airspeedVelocity: Double {
+        return 75.0
+   }
+}
 ```
 
 </br> </br>
@@ -229,18 +250,49 @@ bruceBanner.transform()  // notHulk
 ## Question 5
 
 a. Create a protocol called `Communication`
-
+```
+protocol Communication {
+var message: String { get }
+}
+```
 b. Give it a property called `message`, of type String, and assign it an explicit getter.
 
 c. Create three Classes. `Cow`, `Dog`, `Cat`.
+```
+class Cow: Communication{
+var message: String {
+retun "MOO"
+}
+}
+class Dog: Communication{
+var message: String {
+retun "WUFF WUFF"
+}
+}
+class Cat: Communication{
+var message: String {
+retun "MEOW MEOW"
+}
+}
+```
 
 d. Have your three classes conform to `Communication`
 
 e. `message` should return a unique message for each animal when talk is called.
 
 f. Put an instance of each of your classes in an array.
+```
+let cow = Cow()
+let cat = Cat()
+let dog = Dog()
+
+let animalArr = [Cow(),Cat(),Dog()] as [Any]
+```
 
 g. Iterate over the array and have them print their `message` property
+```
+
+```
 
 
 ## Question 6
