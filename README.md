@@ -23,21 +23,100 @@ a. Create a `Human` class with two properties:
 
 Then create an initializer for the class and create two `Human` instances.
 
+```
+class Human {
+    var name: String = ""
+    var age: Int = 0
+}
+
+let someHuman = Human()
+someHuman.name = "Tom"
+someHuman.age = 12
+```
+
 b. Make the `Human` class adopt the CustomStringConvertible protocol. Then print both of your previously initialized
 `Human` objects.
+```
+class Human: CustomStringConvertible {
+    var name: String = ""
+    var age: Int = 0
+    
+    var description: String {
+    return "Cat sat on Matt."
+}
+}
+
+let someHuman = Human()
+print(someHuman.description)
+
+```
 
 c. Make the `Human` class adopt the Equatable protocol. Two instances of `Human` should be considered equal
 if their names and ages are identical to one another. Print the result of a boolean expression
 evaluating whether or not your two previously initialized `Human` objects are equal to eachother
 (using ==). Then print the result of a boolean expression evaluating whether or not your two
 previously initialized `Human` objects are not equal to eachother (using !=).
+```
+class Human: CustomStringConvertible, Equatable {
+    static func == (lhs: Human, rhs: Human) -> Bool {
+       return lhs == rhs
+    }
+    
+    var name: String = ""
+    var age: Int = 0
+    
+    var description: String {
+    return "Cat sat on Matt."
+}
+}
+
+let someHuman = Human()
+someHuman.name = "Tom"
+someHuman.age = 12
+
+let someHuman2 = Human()
+someHuman2.name = "Tom"
+someHuman2.age = 13
+
+if someHuman == someHuman2 {
+    print("BLAH")
+}
+```
 
 d. Make the `Human` class adopt the `Comparable` protocol. One `Human` is greater than another `Human` if its age is bigger. Create another
 three instances of a `Human`, then create an array called people of type [`Human`] with all of the
 `Human` objects that you have initialized.
+```
+class Human: CustomStringConvertible, Comparable {
+    static func < (lhs: Human, rhs: Human) -> Bool {
+       return lhs < rhs
+    }
+    
+    var name: String = ""
+    var age: Int = 0
+    
+    var description: String {
+    return "Cat sat on Matt."
+}
+}
+
+let someHuman = Human()
+someHuman.name = "Tom"
+someHuman.age = 12
+
+let someHuman2 = Human()
+someHuman2.name = "Tom"
+someHuman2.age = 13
+
+if someHuman.age < someHuman2.age {
+print("The second Tom is older than first Tome by \(somHuman.age - someHuman2.age) year(s).")
+}
+```
 
 Create a new array called sortedPeople of type [`Human`] that is the people array sorted by age.
-
+```
+var sortedPeople: [Human]
+```
 </br> </br>
 
 
@@ -46,14 +125,43 @@ Create a new array called sortedPeople of type [`Human`] that is the people arra
 a. Create a protocol called `Vehicle` with two requirements:
 - a nonsettable `numberOfWheels` property of type Int,
 - a function called drive().
+```
+protocol Vehicle {
+var numberOfWheels: Int { get }
+func drive()
+}
+```
 
 b. Define a `Car` struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 4,
 and drive() should print "Vroom, vroom!" Create an instance of `Car`, print its number of wheels,
 then call drive().
+```
+struct Car: Vehicle {
+var numberOfWheels: Int {
+    return 4
+}
+func drive(){
+    print("Vroom Vroom")
+}
+}
+
+let carInfo = Car
+carInfo.drive()
+```
 
 c. Define a Bike struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 2,
 and drive() should print "Begin pedaling!". Create an instance of Bike, print its number of wheels,
 then call drive().
+```
+struct Bike: Vehicle {
+    var numberOfWheels: Int {
+        return 2
+    }
+    func drive(){
+        print("Begin Pedaling")
+    }
+}
+```
 
 </br> </br>
 
